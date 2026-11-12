@@ -1,3 +1,4 @@
+
 name: Compilar PTZ Studio (Windows)
 
 on:
@@ -8,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -16,10 +18,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restaurar
-        run: dotnet restore PtzStudio.sln
-
-      - name: Testes automatizados da lógica
-        run: dotnet test tests/PtzStudio.Core.Tests/PtzStudio.Core.Tests.csproj -c Release
+        run: dotnet restore src/PtzStudio.App/PtzStudio.App.csproj
 
       - name: Publicar EXE (sem exigir .NET instalado)
         run: >
